@@ -25,10 +25,19 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return view('dashboard');
-        } else{
-            
+            $title = 'Dashboard';
+            return view('dashboard', compact('title'));
+        } else{            
             return view('welcome');
         }
+    }
+    public function about()
+    {
+
+    }
+    
+    public function doc()
+    {
+
     }
 }

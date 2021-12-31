@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContollerUser;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,16 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', [ContollerUser::class, 'index'])->name('dashboard');
-Route::get('/transaksi', [ContollerUser::class, 'transaksi'])->name('transaksi');
-Route::post('/testregister', [ContollerUser::class, 'regis'])->name('tesregis');
+Route::middleware('auth')->group(function(){
+    Route::get('/transaksi', [ContollerUser::class, 'transaksi'])->name('transaksi');
+    Route::get('/uangmasuk', [ContollerUser::class, 'masuk'])->name('masuk');
+    Route::get('/uangkeluar', [ContollerUser::class, 'keluar'])->name('keluar');
+    Route::get('/log', [ContollerUser::class, 'keluar'])->name('log');
+    
+    Route::get('/profil',[ContollerUser::class, 'profil'])->name('profil');
+    Route::put('/profil/{id}',[ContollerUser::class, 'profil_update'])->name('profilupdate');
+    Route::get('/profil/validate',[ContollerUser::class, 'validatepass'])->name('validatepass');
+});
+
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/dokumentasi', [HomeController::class, 'doc'])->name('doc');

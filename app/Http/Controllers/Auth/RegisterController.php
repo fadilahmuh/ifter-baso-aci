@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'nama_mitra' => ['required', 'string', 'max:255'],
             'nama_pemilik' => ['required', 'string', 'max:255'],
-            'telepon' => ['required', 'string', 'max:255'],
+            'telepon' => ['required', 'string', 'max:17'],
             'kota' => ['required', 'string', 'max:70'],
             'kodepos' => ['required', 'string', 'max:5'],
             'alamat' => ['required', 'string'],

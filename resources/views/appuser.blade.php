@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
+  @yield('csslib')
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -40,7 +41,7 @@
             <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->nama_pemilik }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <a href="{{ route('profil') }}" class="dropdown-item has-icon @if(url()->current()==route('profil'))active @endif">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
@@ -61,13 +62,13 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">Pembukuan</a>
+            <a href="/">{{ Auth::user()->nama_mitra }}</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
           </div>
           <ul class="sidebar-menu">
-            <li class=><a class="nav-link" href="blank.html"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+            <li @if(url()->current()==route('home')) class="active" @endif><a class="nav-link" href="{{ route('home') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
             <li class=><a class="nav-link" href="blank.html"><i class="fas fa-hand-holding-usd"></i> <span>Transaksi</span></a></li>
             <li class=><a class="nav-link" href="blank.html"><i class="fas fa-sign-in-alt"></i> <span>Uang Masuk</span></a></li>
             <li class=><a class="nav-link" href="blank.html"><i class="fas fa-sign-out-alt"></i> <span>Uang Keluar</span></a></li>           
@@ -98,9 +99,13 @@
   <script src="assets/modules/moment.min.js"></script>
   <script src="assets/js/stisla.js"></script>
 
+  @yield('lib-script')
+
   @yield('page-script')
 
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
+
+  @yield('line-script')
 </body>
 </html>
