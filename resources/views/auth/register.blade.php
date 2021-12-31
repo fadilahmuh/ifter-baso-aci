@@ -38,6 +38,18 @@
 
             <div class="card card-primary">
               <div class="card-header"><h4>Registrasi</h4></div>
+              @if($errors->any())
+                    @foreach($errors->getMessages() as $this_error)
+                    <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-triangle  mr-3"></i> {{$this_error[0]}}
+                    </div> 
+                    @endforeach
+            @endif 
+            @if(Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    <i class="fas fa-check mr-3"></i> {{ Session('success') }} 
+                </div>        
+            @endif
 
               <div class="card-body">
                 <form method="POST" action="{{ route('register') }}">
@@ -46,7 +58,7 @@
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="nama_mitra">Nama Mitra</label>
-                      <input id="nama_mitra" placeholder="E.g. Baso Aci Mojok" type="text" class="form-control" name="nama_mitra" autofocus>
+                      <input id="nama_mitra" placeholder="E.g. Baso Aci Mojok" type="text" class="form-control" name="nama_mitra" autofocus>                        
                     </div>
                     <div class="form-group col-6">
                       <label for="nama_pemilik">Nama Pemilik</label>
@@ -102,8 +114,8 @@
                       </div>
                     </div>
                     <div class="form-group col-6">
-                      <label for="password2" class="d-block">Konfirmasi Password</label>
-                      <input id="password2" type="password" class="form-control" name="password-confirm">
+                      <label for="password-confirm" class="d-block">Konfirmasi Password</label>
+                      <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                     </div>
                   </div>
                   

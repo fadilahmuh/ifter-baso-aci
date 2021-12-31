@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContollerUser;
 
 /*
@@ -15,13 +16,14 @@ use App\Http\Controllers\ContollerUser;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', [ContollerUser::class, 'index'])->name('dashboard');
 Route::get('/transaksi', [ContollerUser::class, 'transaksi'])->name('transaksi');
+Route::post('/testregister', [ContollerUser::class, 'regis'])->name('tesregis');
