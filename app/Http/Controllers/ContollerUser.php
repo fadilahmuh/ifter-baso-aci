@@ -9,13 +9,13 @@ class ContollerUser extends Controller
     public function index()
     {
         $title = 'Dashboard';
-        view('welcome', compact('title'));
+        return view('dashboard', compact('title'));
     }
 
     public function transaksi()
     {
-        // $title = 'Transaksi';
-        view('transaction', compact('title'));
+        $title = 'Transaksi';
+        return view('transaction', compact('title'));
     }
 }
 
