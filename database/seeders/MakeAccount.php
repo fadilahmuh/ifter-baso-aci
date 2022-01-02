@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
-class create_user extends Seeder
+class MakeAccount extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,12 +18,14 @@ class create_user extends Seeder
         User::create([
             'nama_mitra' => 'Baso Aci Mojok',
             'nama_pemilik' => 'Alam',
-            'telepon' => '08123456798',
+            'telepon' => '08123456789',
             'kota' => 'Bandung',
-            'kodepos' => '40130',
+            'kodepos' => 40130,
             'alamat' => 'Kopo',
-            'email' => 'alam@example.com',
-            'password' => bcrypt('321654987asd'),
-        ]);
+            'email' => 'alam@example.test',
+            'password' => bcrypt('321654987')
+        ]); 
+            
+        
     }
 }

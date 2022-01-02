@@ -38,20 +38,64 @@
 
             <div class="card card-primary">
               <div class="card-header"><h4>Registrasi</h4></div>
+              @if($errors->any())
+                    @foreach($errors->getMessages() as $this_error)
+                    <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-triangle  mr-3"></i> {{$this_error[0]}}
+                    </div> 
+                    @endforeach
+            @endif 
+            @if(Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    <i class="fas fa-check mr-3"></i> {{ Session('success') }} 
+                </div>        
+            @endif
 
               <div class="card-body">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
+                    @method("POST")
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="nama_mitra">Nama Mitra</label>
-                      <input id="nama_mitra" placeholder="E.g. Baso Aci Mojok" type="text" class="form-control" name="nama_mitra" autofocus>
+                      <input id="nama_mitra" placeholder="E.g. Baso Aci Mojok" type="text" class="form-control" name="nama_mitra" autofocus>                        
                     </div>
                     <div class="form-group col-6">
                       <label for="nama_pemilik">Nama Pemilik</label>
                       <input id="nama_pemilik" placeholder="E.g. Alam" type="text" class="form-control" name="nama_pemilik">
                     </div>
                   </div>
+
+                  
+
+                  <div class="row">                    
+                    <div class="form-group col-6">
+                      <label for="telepon">Nomor Telepon</label>
+                      <input id="telepon" type="type" placeholder="08xxxxxxxxx" class="form-control" name="telepon">
+                      <div class="invalid-feedback">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label>Kota</label>
+                      <input type="text" class="form-control" name="kota" id="kota">
+                    </div>
+                    <div class="form-group col-6">
+                      <label>Kode Pos</label>
+                      <input type="number" class="form-control" name="kodepos" id="kodepos">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="alamat">Alamat Lengkap</label>
+                    <input id="alamat" type="alamat" placeholder="" class="form-control" name="alamat">
+                    <div class="invalid-feedback">
+                    </div>
+                  </div>
+                    
+                  <br>
 
                   <div class="form-group">
                     <label for="email">Email</label>
@@ -60,15 +104,6 @@
                     </div>
                   </div>
 
-                  <div class="row">                    
-                    <div class="form-group col-6">
-                      <label for="telepon">Nomor Telepon</label>
-                      <input id="telepon" type="text" placeholder="08xxxxxxxxx" class="form-control" name="email">
-                      <div class="invalid-feedback">
-                      </div>
-                    </div>
-                  </div>
-                    
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="password" class="d-block">Password</label>
@@ -79,40 +114,23 @@
                       </div>
                     </div>
                     <div class="form-group col-6">
-                      <label for="password_confirmation" class="d-block">Konfirmasi Password</label>
-                      <input id="password_confirmation" type="password" class="form-control" name="password_confirmation">
+                      <label for="password-confirm" class="d-block">Konfirmasi Password</label>
+                      <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                     </div>
                   </div>
-                  <br>
                   
-                  <div class="row">
-                    <div class="form-group col-6">
-                      <label>Kota</label>
-                      <input type="text" class="form-control" name="kota" id="kota">
-                    </div>
-                    <div class="form-group col-6">
-                      <label>Kode Pos</label>
-                      <input type="text" class="form-control" name="kodepos" id="kodepos">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="alamat">Alamat Lengkap</label>
-                    <input id="alamat" type="alamat" placeholder="" class="form-control" name="alamat">
-                    <div class="invalid-feedback">
-                    </div>
-                  </div>
+                  
 
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="agree" class="custom-control-input" id="agree">
-                      <label class="custom-control-label" for="agree">Saya setuju dengan syarat dan ketentuan</label>
-                    </div>
+                        <input type="checkbox" name="agree" class="custom-control-input" id="agree">
+                        <label class="custom-control-label" for="agree">Saya setuju dengan syarat dan ketentuan</label>
+                      </div>
                   </div>
 
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                        {{ __('Register') }}
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id='regis' disabled>
+                      Register
                     </button>
                   </div>
                 </form>

@@ -50,12 +50,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nama_pemilik' => ['required', 'string', 'max:255'],
             'nama_mitra' => ['required', 'string', 'max:255'],
-            'telepon' => ['required', 'string', 'max:15'],
-            'kota' => ['required', 'string', 'max:50'],
+            'nama_pemilik' => ['required', 'string', 'max:255'],
+            'telepon' => ['required', 'string', 'max:17'],
+            'kota' => ['required', 'string', 'max:70'],
             'kodepos' => ['required', 'string', 'max:5'],
-            'alamat' => ['required', 'string', 'max:255'],
+            'alamat' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -69,13 +69,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
         return User::create([
-            'nama_pemilik' => $data['nama_pemilik'],
             'nama_mitra' => $data['nama_mitra'],
-            'kota' => $data['kota'],
+            'nama_pemilik' => $data['nama_pemilik'],
             'telepon' => $data['telepon'],
-            'kodepos' => $data['kodepos'],
+            'kota' => $data['kota'],
+            'kodepos' => (int)$data['kodepos'],
             'alamat' => $data['alamat'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

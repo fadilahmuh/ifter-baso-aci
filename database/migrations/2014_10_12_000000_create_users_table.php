@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('nama_mitra');
             $table->string('telepon');
             $table->string('kota');
-            $table->string('kodepos');
+            $table->integer('kodepos');
             $table->longText('alamat');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
