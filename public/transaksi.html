@@ -84,11 +84,23 @@
             <h1>Transaksi</h1>
           </div>
           <div class="row">
-            <div class="col-12 col-md-6 col-lg-6">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Tambah Data Transaksi</h4>
+                </div>
+                <div class="card-body">
+                  
+                </div>
+                <div class="card-footer text-right">
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah</button></td>
+                </div>
+              </div>
               <div class="card">
                 <div class="card-header">
                   <h4>Berikut Rincian Transaksi dan Total Saldo</h4>
                 </div>
+                  <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button> -->
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table table-bordered table-md">
@@ -126,49 +138,12 @@
                              <td>Rp. 1.000.000</td>
                              <td>Rp. 0</td>
                              <td><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button></td>
-
-                           </tr>     
-                           <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" style="display: none;" data-backdrop="false">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title">Edit Data Transaksi</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <div class="col-180 col-md-180 col-lg-180">
-                                      <div class="card-body">
-                                        <div class="section-title mt-0">Mohon Isi Data Dengan Benar</div>
-                                        <div class="form-group">
-                                          <label>Tanggal</label>
-                                          <input type="text" class="form-control datemask" placeholder="DD/MM/YYYY">
-                                        </div>
-                                        <div class="form-group">
-                                          <label>Keterangan</label>
-                                          <input type="text" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                          <label>Uang Masuk / Keluar</label>
-                                          <select class="form-control">
-                                            <option>Uang Masuk</option>
-                                            <option>Uang Keluar</option>
-                                          </select>
-                                        </div>
-                                        <div class="form-group">
-                                          <label>Nominal</label>
-                                          <input type="text" class="form-control">
-                                        </div>
-                                <div class="modal-footer bg-whitesmoke br">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>    
-                    </tbody></table>
-                    <table></table>
+                           </tr>       
+                           <tr>
+                             <td>Total</td>
+                             <td>Rp.0</td>
+                           </tr>                        
+                                              </tbody></table>
                   </div>
                 </div>
                 <div class="card-footer text-right">
@@ -187,16 +162,91 @@
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div>                
               </div>
-            </div>
-            
+            </div>            
           <div class="section-body">
           </div>
         </section>
       </div>
       <footer class="main-footer">
       </footer>
+    </div>
+    <!-- modal edit -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" style="display: show;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Data Transaksi</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label>Tanggal</label>
+                <input type="text" class="form-control datemask" placeholder="DD/MM/YYYY">
+              </div>
+              <div class="form-group">
+                <label>Keterangan</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Uang Masuk / Keluar</label>
+                <select class="form-control">
+                  <option>Uang Masuk</option>
+                  <option>Uang Keluar</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Nominal</label>
+                <input type="text" class="form-control">
+              </div>
+          </div>
+          <div class="modal-footer bg-whitesmoke br">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal tambah -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalTambah" style="display: show;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tambah Data Transaksi</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label>Tanggal</label>
+                <input type="text" class="form-control datemask" placeholder="DD/MM/YYYY">
+              </div>
+              <div class="form-group">
+                <label>Keterangan</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Uang Masuk / Keluar</label>
+                <select class="form-control">
+                  <option>Uang Masuk</option>
+                  <option>Uang Keluar</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Nominal</label>
+                <input type="text" class="form-control">
+              </div>
+          </div>
+          <div class="modal-footer bg-whitesmoke br">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
     
   </div>

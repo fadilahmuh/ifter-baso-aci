@@ -84,6 +84,7 @@
       </div>
       <!-- Main Content -->
       @yield('content')
+      @yield('modal')
 
       <footer class="main-footer">
       </footer>

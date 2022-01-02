@@ -27,6 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function(){
     Route::get('/transaksi', [ContollerUser::class, 'transaksi'])->name('transaksi');
+    //link->controllerUser(fungsi dalam kutip)
     Route::get('/uangmasuk', [ContollerUser::class, 'masuk'])->name('masuk');
     Route::get('/uangkeluar', [ContollerUser::class, 'keluar'])->name('keluar');
     Route::get('/log', [ContollerUser::class, 'keluar'])->name('log');
