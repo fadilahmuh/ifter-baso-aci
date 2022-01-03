@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class ContollerUser extends Controller
 {
+    public function __construct()
+    {
+
+    }
     public function transaksi()
     {
         $title = 'Transaksi';
@@ -23,6 +27,12 @@ class ContollerUser extends Controller
 
     public function keluar()
     {
+    }
+
+    public function log()
+    {
+        $title = 'Log';
+        return view('log', compact('title'));
     }
 
     public function profil()    

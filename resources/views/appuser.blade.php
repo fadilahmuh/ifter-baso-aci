@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
-  <!-- CSS Libraries -->
   @yield('csslib')
 
   <!-- Template CSS -->
@@ -44,13 +43,13 @@
               <a href="{{ route('profil') }}" class="dropdown-item has-icon @if(url()->current()==route('profil'))active @endif">
                 <i class="far fa-user"></i> Profile
               </a>
-              <a href="features-activities.html" class="dropdown-item has-icon">
+              <a href="{{ route('log') }}" class="dropdown-item has-icon @if(url()->current()==route('log'))active @endif">
                 <i class="fas fa-bolt"></i> Activities
               </a>
               <div class="dropdown-divider"></div>
               <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"  onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+              document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt"></i> Logout
               </a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
@@ -65,25 +64,26 @@
             <a href="/">{{ Auth::user()->nama_mitra }}</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
+            <a href="/"></a>
           </div>
           <ul class="sidebar-menu">
-            <li @if(url()->current()==route('home')) class="active" @endif><a class="nav-link" href="{{ route('home') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li class=><a class="nav-link" href="blank.html"><i class="fas fa-hand-holding-usd"></i> <span>Transaksi</span></a></li>
-            <li class=><a class="nav-link" href="blank.html"><i class="fas fa-sign-in-alt"></i> <span>Uang Masuk</span></a></li>
-            <li class=><a class="nav-link" href="blank.html"><i class="fas fa-sign-out-alt"></i> <span>Uang Keluar</span></a></li>           
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+            <li class=" @if(url()->current()==route('home'))active @endif"><a class="nav-link" href="{{ route('home')}}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+            <li class=" @if(url()->current()==route('transaksi'))active @endif"><a class="nav-link" href="{{ route('transaksi')}}"><i class="fas fa-hand-holding-usd"></i> <span>Transaksi</span></a></li>
+            <li class=" @if(url()->current()==route('keluar'))active @endif"><a class="nav-link" href="{{ route('keluar')}}"><i class="fas fa-sign-in-alt"></i> <span>Uang Masuk</span></a></li>
+            <li class=" @if(url()->current()==route('masuk'))active @endif"><a class="nav-link" href="{{ route('masuk')}}"><i class="fas fa-sign-out-alt"></i> <span>Uang Keluar</span></a></li>           
+            <li><a class="nav-link  @if(url()->current()==route('doc'))active @endif" href="{{ route('doc')}}"><i class="fas fa-pencil-ruler"></i> <span>Dokumentasi</span></a></li>
           </ul>
 
           <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="" class="btn btn-primary btn-lg btn-block btn-icon-split">
-              <i class="fas fa-rocket"></i> Documentation
+              <i class="fas fa-rocket"></i> Credits
             </a>
           </div>        
         </aside>
       </div>
       <!-- Main Content -->
       @yield('content')
+
       @yield('modal')
 
       <footer class="main-footer">
@@ -99,11 +99,12 @@
   <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="assets/modules/moment.min.js"></script>
   <script src="assets/js/stisla.js"></script>
-
+  
   @yield('lib-script')
 
   @yield('page-script')
-
+  
+  <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
 

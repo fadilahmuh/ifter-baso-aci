@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function(){
     //link->controllerUser(fungsi dalam kutip)
     Route::get('/uangmasuk', [ContollerUser::class, 'masuk'])->name('masuk');
     Route::get('/uangkeluar', [ContollerUser::class, 'keluar'])->name('keluar');
-    Route::get('/log', [ContollerUser::class, 'keluar'])->name('log');
+    Route::get('/log', [ContollerUser::class, 'log'])->name('log');
     
     Route::get('/profil',[ContollerUser::class, 'profil'])->name('profil');
     Route::put('/profil/{id}',[ContollerUser::class, 'profil_update'])->name('profilupdate');
