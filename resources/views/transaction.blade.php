@@ -96,10 +96,12 @@
 </footer>
 </div>
 @endsection
+
 @section('page-script')
   <!-- Page Specific JS File -->
   <script src="assets/js/page/bootstrap-modal.js"></script>
 @endsection
+
 @section('modal')
 <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" style="display: show;">
   <div class="modal-dialog" role="document">

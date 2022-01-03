@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class ContollerUser extends Controller
 {
+    public function __construct()
+    {
+
+    }
     public function transaksi()
     {
         $title = 'Transaksi';
