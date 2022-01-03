@@ -25,6 +25,12 @@ class ContollerUser extends Controller
     {
     }
 
+    public function log()
+    {
+        $title = 'Log';
+        return view('log', compact('title'));
+    }
+
     public function profil()    
     {
         $title = 'Profil';
