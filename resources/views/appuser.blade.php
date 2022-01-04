@@ -6,8 +6,8 @@
   <title>@isset($title){{$title}} -@endisset Catatan Keuangan</title>
 
   <!-- General CSS Files -->
-  <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
   @yield('csslib')
 
@@ -37,7 +37,7 @@
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+            <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->nama_pemilik }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="{{ route('profil') }}" class="dropdown-item has-icon @if(url()->current()==route('profil'))active @endif">
@@ -92,21 +92,21 @@
   </div>
 
   <!-- General JS Scripts -->
-  <script src="assets/modules/jquery.min.js"></script>
-  <script src="assets/modules/popper.js"></script>
-  <script src="assets/modules/tooltip.js"></script>
-  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="assets/modules/moment.min.js"></script>
-  <script src="assets/js/stisla.js"></script>
+  <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/popper.js') }}"></script>
+  <script src="{{ asset('assets/modules/tooltip.js') }}"></script>
+  <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/moment.min.js') }}"></script>
+  <script src="{{ asset('assets/js/stisla.js') }}"></script>
   
   @yield('lib-script')
 
   @yield('page-script')
   
   <!-- Template JS File -->
-  <script src="assets/js/scripts.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <script src="{{ asset('assets/js/scripts.js') }}"></script>
+  <script src="{{ asset('assets/js/custom.js') }}"></script>
 
   @yield('line-script')
 </body>
