@@ -14,6 +14,13 @@ class ContollerUser extends Controller
     {
 
     }
+
+    public function landingpage()
+    {
+        $title = 'LandingPage';
+        return view('landingpage', compact('title'));
+    }
+    
     public function transaksi()
     {
         $title = 'Transaksi';
