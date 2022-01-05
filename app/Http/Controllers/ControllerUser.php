@@ -114,12 +114,23 @@ class ControllerUser extends Controller
                     'alamat' => isset($request->alamat)? $request->alamat : $old_user->alamat,
                     'telepon' => isset($request->telepon)? $request->telepon : $old_user->telepon,
                 ]);
+                            
+                Log::create([
+                    'keterangan'=> 'Memperbarui informasi akun',
+                    'type' => 'U',
+                    'users_id' => Auth::user()->id,
+                ]);
+
             } elseif ($request->tipe == 'pass'){
                 $old_user->update([
                     'password' => isset($request->password)? bcrypt($request->password): $old_user->password ,
                 ]);
+                Log::create([
+                    'keterangan'=> 'Memperbarui password akun',
+                    'type' => 'U',
+                    'users_id' => Auth::user()->id,
+                ]);
             }
-            
 
             return redirect()->route('profil')->with('success','Akun berhasil di update!');
         }
