@@ -6,149 +6,36 @@
       <div class="section-header">
         <h1>Activities</h1>
       </div>
-          <div class="section-body">
-            <h2 class="section-title">September 2018</h2>
+          <div class="section-body">          
             <div class="row">
               <div class="col-12">
                 <div class="activities">
+
+                  @foreach ($logs as $log)
                   <div class="activity">
                     <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fas fa-comment-alt"></i>
+                      <i class="@if($log->type == 'C')
+                        fas fa-plus
+                      @elseif ($log->type == 'U')
+                        fas fa-pen-alt
+                      @elseif ($log->type == 'D')
+                        fas fa-trash
+                      @endif
+                      "></i>
                     </div>
                     <div class="activity-detail">
                       <div class="mb-2">
-                        <span class="text-job text-primary">2 min ago</span>
+                        <span class="text-job">{{Carbon::parse($log->created_at)->diffForHumans()}}</span>
                         <span class="bullet"></span>
                         <a class="text-job" href="#">View</a>
-                        <div class="float-right dropdown">
-                          <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 19px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger trigger--fire-modal-1" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div>
-                        </div>
                       </div>
-                      <p>Have commented on the task of "<a href="#">Responsive design</a>".</p>
-                    </div>
+                      <p>{{$log->keterangan}}@if(!is_null($log->transactions_id)) @if($log->transactions->is_pemasukan == 1)pemasukan @else pengeluaran @endif @endif</p>
+                    </div>                    
                   </div>
-                  <div class="activity">
-                    <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fas fa-arrows-alt"></i>
-                    </div>
-                    <div class="activity-detail">
-                      <div class="mb-2">
-                        <span class="text-job">1 hour ago</span>
-                        <span class="bullet"></span>
-                        <a class="text-job" href="#">View</a>
-                        <div class="float-right dropdown">
-                          <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                          <div class="dropdown-menu">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger trigger--fire-modal-2" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div>
-                        </div>
-                      </div>
-                      <p>Moved the task "<a href="#">Fix some features that are bugs in the master module</a>" from Progress to Finish.</p>
-                    </div>
-                  </div>
-                  <div class="activity">
-                    <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fas fa-unlock"></i>
-                    </div>
-                    <div class="activity-detail">
-                      <div class="mb-2">
-                        <span class="text-job">4 hour ago</span>
-                        <span class="bullet"></span>
-                        <a class="text-job" href="#">View</a>
-                        <div class="float-right dropdown">
-                          <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                          <div class="dropdown-menu">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger trigger--fire-modal-3" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div>
-                        </div>
-                      </div>
-                      <p>Login to the system with ujang@maman.com email and location in Bogor.</p>
-                    </div>
-                  </div>
-                  <div class="activity">
-                    <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fas fa-sign-out-alt"></i>
-                    </div>
-                    <div class="activity-detail">
-                      <div class="mb-2">
-                        <span class="text-job">12 hour ago</span>
-                        <span class="bullet"></span>
-                        <a class="text-job" href="#">View</a>
-                        <div class="float-right dropdown">
-                          <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                          <div class="dropdown-menu">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger trigger--fire-modal-4" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div>
-                        </div>
-                      </div>
-                      <p>Log out of the system after 6 hours using the system.</p>
-                    </div>
-                  </div>
-                  <div class="activity">
-                    <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fas fa-trash"></i>
-                    </div>
-                    <div class="activity-detail">
-                      <div class="mb-2">
-                        <span class="text-job">Yesterday</span>
-                        <span class="bullet"></span>
-                        <a class="text-job" href="#">View</a>
-                        <div class="float-right dropdown">
-                          <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                          <div class="dropdown-menu">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger trigger--fire-modal-5" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div>
-                        </div>
-                      </div>
-                      <p>Removing task "Delete all unwanted selectors in CSS files".</p>
-                    </div>
-                  </div>
-                  <div class="activity">
-                    <div class="activity-icon bg-primary text-white shadow-primary">
-                      <i class="fas fa-trash"></i>
-                    </div>
-                    <div class="activity-detail">
-                      <div class="mb-2">
-                        <span class="text-job">Yesterday</span>
-                        <span class="bullet"></span>
-                        <a class="text-job" href="#">View</a>
-                        <div class="float-right dropdown">
-                          <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                          <div class="dropdown-menu">
-                            <div class="dropdown-title">Options</div>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger trigger--fire-modal-6" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                          </div>
-                        </div>
-                      </div>
-                      <p>Assign the task of "<a href="#">Redesigning website header and make it responsive AF</a>" to <a href="#">Syahdan Ubaidilah</a>.</p>
-                    </div>
-                  </div>
+                  @endforeach
+
+                  {{$logs ->links()}}
+
                 </div>
               </div>
             </div>

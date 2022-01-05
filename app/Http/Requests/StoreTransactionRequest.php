@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StoreTransactionRequest extends FormRequest
 {
@@ -11,10 +13,10 @@ class StoreTransactionRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return false;
-    }
+    // public function authorize()
+    // {
+    //     return false;
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,5 +28,13 @@ class StoreTransactionRequest extends FormRequest
         return [
             //
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'tanggal' => Carbon::createFromFormat('Y-m-d', $this->tanggal)->format('Y-m-d'),
+            'nominal' => (int)Str::replace(',', '', $this->nominal),
+        ]);
     }
 }

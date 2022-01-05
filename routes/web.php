@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ControllerUser;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/dokumentasi', [HomeController::class, 'doc'])->name('doc');
 
 Route::middleware('auth')->group(function(){
-    Route::get('/transaksi', [ControllerUser::class, 'transaksi'])->name('transaksi');
+    // Route::get('/transaksi', [ControllerUser::class, 'transaksi'])->name('transaksi');
     //link->controllerUser(fungsi dalam kutip)
     Route::get('/uangmasuk', [ControllerUser::class, 'masuk'])->name('masuk');
     Route::get('/uangkeluar', [ControllerUser::class, 'keluar'])->name('keluar');
@@ -35,5 +36,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/profil',[ControllerUser::class, 'profil'])->name('profil');
     Route::put('/profil/{id}',[ControllerUser::class, 'profil_update'])->name('profilupdate');
     Route::get('/profil/validate',[ControllerUser::class, 'validatepass'])->name('validatepass');
+
+    Route::resource('transaksi', TransactionController::class)->names([
+        'index' => 'transaksi',
+    ]);
 });
 

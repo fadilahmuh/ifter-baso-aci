@@ -14,6 +14,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
@@ -23,11 +24,12 @@
 
   gtag('config', 'UA-94034622-3');
 </script>
-<!-- /END GA --></head>
+<!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
-    <div class="main-wrapper main-wrapper-1">
+    <div class="main-wrapper">
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
@@ -58,13 +60,14 @@
           </li>
         </ul>
       </nav>
+      
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="/">{{ Auth::user()->nama_mitra }}</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="/"></a>
+            <a href="/">CT</a>
           </div>
           <ul class="sidebar-menu">
             <li class=" @if(url()->current()==route('home'))active @endif"><a class="nav-link" href="{{ route('home')}}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
@@ -84,12 +87,13 @@
       <!-- Main Content -->
       @yield('content')
 
-      @yield('modal')
-
+      
       <footer class="main-footer">
       </footer>
     </div>
   </div>
+  
+  @yield('modal')
 
   <!-- General JS Scripts -->
   <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
@@ -103,7 +107,7 @@
   @yield('lib-script')
 
   @yield('page-script')
-  
+
   <script src="{{ asset('assets/js/scripts.js') }}"></script>
   <script src="{{ asset('assets/js/custom.js') }}"></script>
 

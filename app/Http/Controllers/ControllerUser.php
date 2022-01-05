@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,8 +39,12 @@ class ControllerUser extends Controller
 
     public function log()
     {
+        $logs = Log::where('users_id', Auth::user()->id)
+        ->orderByDesc('created_at')
+        ->paginate(10);
+
         $title = 'Log';
-        return view('log', compact('title'));
+        return view('log', compact('title', 'logs'));
     }
 
     public function profil()    

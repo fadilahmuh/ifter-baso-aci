@@ -6,12 +6,32 @@
     <div class="section-header">
       <h1>Transaksi</h1>
     </div>
-    <div class="row">
+    @if($errors->any())
+    @foreach($errors->getMessages() as $this_error)
+    <div class="alert alert-danger alert-has-icon">
+        <div class="alert-body">
+            <i class="fas fa-exclamation-triangle mr-1"></i> {{$this_error[0]}}
+        </div>
+    </div>
+    @endforeach
+    @endif 
+    @if(Session::has('success'))
+    <div class="alert alert-success alert-has-icon">
+        <div class="alert-body">
+            <i class="fas fa-check mr-1"></i> {{ Session('success') }} 
+        </div>
+    </div>    
+    @endif    
+    <div class="section-body">
+      <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
             <h4>Tambah Data Transaksi</h4>
           </div>
+          <form action="{{ route('transaksi.store') }}" method="POST" enctype="multipart/form-data">
+            @method('POST')
+            @csrf
           <div class="card-body">
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal</label>
@@ -23,7 +43,7 @@
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Keterangan</label>
               <div class="col-sm-12 col-md-7">
-                <input type="text" name="katerangan" class="form-control">
+                <input type="text" name="keterangan" class="form-control">
               </div>
             </div>
 
@@ -31,11 +51,11 @@
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
               <div class="col-sm-12 col-md-7 pl-4">
                 <div class="pl-3 pr-2 custom-radio form-check-inline">
-                  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                  <input type="radio" id="customRadio1" name="is_pemasukan" class="custom-control-input" value="1">
                   <label class="custom-control-label" for="customRadio1">Pemasukan</label>
                 </div>
                 <div class="pl-3 custom-radio form-check-inline">
-                  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                  <input type="radio" id="customRadio2" name="is_pemasukan" class="custom-control-input"  value="0">
                   <label class="custom-control-label" for="customRadio2">Pengeluaran</label>
                 </div>
               </div>
@@ -53,11 +73,14 @@
                   <input type="text" name="nominal" class="form-control currency">
                 </div>
               </div>
-            </div>            
-          </div>
+            </div>             
+            <div class="card-footer text-right pr-0">
+              <button type="submit" class="btn btn-primary">Simpan</button></div>         
+            </div>
+          </form>  
         </div>
       </div>            
-    <div class="section-body">
+
     </div>
   </section>
 </div>
