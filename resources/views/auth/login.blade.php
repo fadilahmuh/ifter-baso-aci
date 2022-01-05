@@ -85,7 +85,10 @@
               </div>
             </div>
             <div class="mt-5 text-muted text-center">
-              Belum punya akun? <a href="auth-register.html">Buat disini</a>
+              Belum punya akun? <a href="{{ route('register') }}">Buat disini</a>
+            </div>          
+            <div class="mt-2 mb-5 text-muted text-center text-decoration-none">
+              <a href="/"><i class="fas fa-arrow-left"></i> Kembali ke Home</a>
             </div>          
           </div>
         </div>

@@ -135,7 +135,20 @@
                   </div>
                 </form>
               </div>
-            </div>            
+            </div> 
+            
+            <div class="row my-5">
+              <div class="col-6">
+                <div class="text-muted text-right text-decoration-none">
+                  <a href="{{ route('login',) }}"><i class="fas fa-arrow-left"></i> ke Login</a>
+                </div>   
+              </div>
+              <div class="col-6">
+                <div class="text-muted text-left text-decoration-none">
+                  <a href="/">ke Home <i class="fas fa-arrow-right"></i></a>
+                </div>   
+              </div>
+            </div>
           </div>
         </div>
       </div>

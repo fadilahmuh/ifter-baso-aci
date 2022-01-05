@@ -13,79 +13,48 @@
             <h4>Tambah Data Transaksi</h4>
           </div>
           <div class="card-body">
-            
-          </div>
-          <div class="card-footer text-right">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah</button></td>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <h4>Berikut Rincian Transaksi dan Total Saldo</h4>
-          </div>
-            <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button> -->
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered table-md">
-                <tbody><tr>
-                  <th>Tanggal</th>
-                  <th>Keterangan</th>
-                  <th>Uang Masuk</th>
-                  <th>Uang Keluar</th>
-                  <th>Action</th>
-                </tr>
-                        <tr>
-                           <td>31/12/2021</td>
-                          <td>Pemasukan Modal Awal</td>
-                          <td>Rp. 1.000.000</td>
-                          <td>Rp. 0</td>
-                          <td><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button></td>
-                        </tr>                
-                        <tr>
-                           <td>31/12/2021</td>
-                          <td>Pemasukan Modal Awal</td>
-                          <td>Rp. 1.000.000</td>
-                          <td>Rp. 0</td>
-                          <td><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button></td>
-                        </tr>
-                        <tr>
-                          <td>31/12/2021</td>
-                         <td>Pemasukan Modal Awal</td>
-                         <td>Rp. 1.000.000</td>
-                         <td>Rp. 0</td>
-                         <td><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button></td>
-                       </tr>  
-                       <tr>
-                        <td>31/12/2021</td>
-                       <td>Pemasukan Modal Awal</td>
-                       <td>Rp. 1.000.000</td>
-                       <td>Rp. 0</td>
-                       <td><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button></td>
-                     </tr>       
-                     <tr>
-                       <td>Total</td>
-                       <td>Rp.0</td>
-                     </tr>                        
-              </tbody></table>
+            <div class="form-group row mb-4">
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal</label>
+              <div class="col-sm-12 col-md-7">
+                <input type="text" name="tanggal" class="form-control datepicker">
+              </div>
             </div>
+
+            <div class="form-group row mb-4">
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Keterangan</label>
+              <div class="col-sm-12 col-md-7">
+                <input type="text" name="katerangan" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group row mb-4">
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+              <div class="col-sm-12 col-md-7 pl-4">
+                <div class="pl-3 pr-2 custom-radio form-check-inline">
+                  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadio1">Pemasukan</label>
+                </div>
+                <div class="pl-3 custom-radio form-check-inline">
+                  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadio2">Pengeluaran</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mb-4">
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nominal</label>
+              <div class="col-sm-12 col-md-7">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      Rp
+                    </div>
+                  </div>
+                  <input type="text" name="nominal" class="form-control currency">
+                </div>
+              </div>
+            </div>            
           </div>
-          <div class="card-footer text-right">
-            <nav class="d-inline-block">
-              <ul class="pagination mb-0">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                </li>
-              </ul>
-            </nav>
-          </div>                
         </div>
       </div>            
     <div class="section-body">
@@ -95,11 +64,6 @@
 <footer class="main-footer">
 </footer>
 </div>
-@endsection
-
-@section('page-script')
-  <!-- Page Specific JS File -->
-  <script src="assets/js/page/bootstrap-modal.js"></script>
 @endsection
 
 @section('modal')
@@ -178,4 +142,16 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('lib-script')
+<script src="{{ asset('assets/modules/cleave-js/dist/cleave.min.js') }}"></script>
+<script src="{{ asset('assets/modules/cleave-js/dist/addons/cleave-phone.us.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+@endsection
+
+@section('page-script')
+<script src="{{ asset('assets/js/views/transaksi.js') }}"></script>
+<script src="{{ asset('assets/js/page/bootstrap-modal.js') }}"></script>
 @endsection

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class ContollerUser extends Controller
+class ControllerUser extends Controller
 {
     public function __construct()
     {
