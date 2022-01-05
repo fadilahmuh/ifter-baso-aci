@@ -18,12 +18,12 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets-landing/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets-landing/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets-landing/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets-landing/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets-landing/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets-landing/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('assets-landing/vendor/aos/aos.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets-landing/vendor/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets-landing/vendor/bootstrap-icons/bootstrap-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets-landing/vendor/glightbox/css/glightbox.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets-landing/vendor/remixicon/remixicon.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets-landing/vendor/swiper/swiper-bundle.min.css') }}">
 
   <!-- Template Main CSS File -->
   <link href="assets-landing/css/style.css" rel="stylesheet">
@@ -43,7 +43,6 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets-landing/img/BACKGROUND.png" alt="">
         <span>CATUANG</span>
       </a>
 
@@ -51,8 +50,8 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="btn">Login</a></li>
-          <li><a class="btn">Register</a></li>
+          <li><a class="btn" href="{{ route('login')}}">Login</a></li>
+          <li><a class="btn" href="{{ route('register')}}">Register</a></li>
           <!-- <li><a href="blog.html">Blog</a></li> -->
           
         </ul>
@@ -176,11 +175,8 @@
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </section><!-- End Team Section -->
 
   
@@ -208,13 +204,13 @@
   </div>
 
   <!-- General JS Scripts -->
-  <script src="assets-landing/vendor/purecounter/purecounter.js"></script>
-  <script src="assets-landing/vendor/aos/aos.js"></script>
-  <script src="assets-landing/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets-landing/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets-landing/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets-landing/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets-landing/vendor/php-email-form/validate.js"></script>
+  <script src="{{asset('assets-landing/vendor/purecounter/purecounter.js')}}"></script>
+  <script src="{{asset('assets-landing/vendor/aos/aos.js')}}"></script>
+  <script src="{{asset('assets-landing/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets-landing/vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{asset('assets-landing/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('assets-landing/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{asset('assets-landing/vendor/php-email-form/validate.js')}}"></script>
 
   @yield('lib-script')
 

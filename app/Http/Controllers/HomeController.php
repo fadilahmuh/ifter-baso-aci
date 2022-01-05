@@ -28,7 +28,7 @@ class HomeController extends Controller
             $title = 'Dashboard';
             return view('dashboard', compact('title'));
         } else{            
-            return view('welcome');
+            return view('landingpage');
         }
     }
     public function about()

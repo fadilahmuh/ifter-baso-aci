@@ -1,5 +1,4 @@
 @extends('appuser')
-
 @section('content')
 <div class="main-content">
 <section class="section">

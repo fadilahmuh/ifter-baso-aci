@@ -24,20 +24,17 @@ use App\Http\Controllers\UserController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/dokumentasi', [HomeController::class, 'doc'])->name('doc');
 
 Route::middleware('auth')->group(function(){
     Route::get('/transaksi', [ContollerUser::class, 'transaksi'])->name('transaksi');
     //link->controllerUser(fungsi dalam kutip)
     Route::get('/uangmasuk', [ContollerUser::class, 'masuk'])->name('masuk');
     Route::get('/uangkeluar', [ContollerUser::class, 'keluar'])->name('keluar');
-    Route::get('/log', [ContollerUser::class, 'log'])->name('log');
-    Route::get('/landingpage', [ContollerUser::class, 'landingpage'])->name('landingpage');   
-
-    
+    Route::get('/log', [ContollerUser::class, 'log'])->name('log');         
     Route::get('/profil',[ContollerUser::class, 'profil'])->name('profil');
     Route::put('/profil/{id}',[ContollerUser::class, 'profil_update'])->name('profilupdate');
     Route::get('/profil/validate',[ContollerUser::class, 'validatepass'])->name('validatepass');
 });
 
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/dokumentasi', [HomeController::class, 'doc'])->name('doc');
