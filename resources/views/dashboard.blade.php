@@ -20,25 +20,25 @@
             <div class="row justify-content-center mb-4">
              
                 <div class="col-3">
-                  <a type="button" class="btn bg-white btn-outline-primary text-primary btn-sq-responsive"><i class="fas fa-hand-holding-usd"></i></a>
+                  <a type="button" class="btn bg-white btn-outline-primary btn-sq-responsive" href="{{ route('transaksi') }}"><i class="fas fa-hand-holding-usd" ></i></a>
                 </div>
 
                 <div class="col-3">
-                  <a type="button" class="btn bg-white btn-outline-primary text-primary btn-sq-responsive"><i class="fas fa-sign-in-alt"></i></a>
+                  <a type="button" class="btn bg-white btn-outline-primary btn-sq-responsive" href="{{ route('masuk') }}"><i class="fas fa-sign-in-alt"></i></a>
                 </div>
 
                 <div class="col-3">
-                  <a type="button" class="btn bg-white btn-outline-primary btn-sq-responsive"><i class="fas fa-sign-out-alt"></i></a>
+                  <a type="button" class="btn bg-white btn-outline-primary btn-sq-responsive" href="{{ route('keluar') }}"><i class="fas fa-sign-out-alt"></i></a>
                 </div>
             </div>
 
-            <div class="row">
+            <div id="row-table" class="row">
               <div class="col-12">
                 <div class="card">
-                  <div class="card-header">
-                    <h4>Bar Chart</h4>
+                  <div class="card-header justify-content-center">
+                    <h4>Statistik Harian</h4>
                   </div>
-                  <div class="card-body">
+                  <div id="stat" class="card-body" data-url="{{ route('data-ds') }}">
                     <canvas id="myChart2"></canvas>
                   </div>
                 </div>
@@ -52,9 +52,14 @@
 @endsection
 
 @section('lib-script')
-<script src="assets/modules/chart.min.js"></script>
+    <script src="assets/modules/chart.min.js"></script>
 @endsection
 
 @section('page-script')
-<script src="assets/js/page/modules-chartjs.js"></script>
+<script src="{{ asset('assets/js/views/dashboard.js') }}"></script>
+@endsection
+
+
+@section('line-script')
+
 @endsection
