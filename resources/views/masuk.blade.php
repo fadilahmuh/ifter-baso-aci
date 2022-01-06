@@ -3,8 +3,9 @@
 @section('csslib')
 <link rel="stylesheet" href="assets/modules/datatables/datatables.min.css">
 <link rel="stylesheet" href="assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="assets/modules/datatables/DataTables-1.10.16/css/responsive.dataTables.css">
 <link rel="stylesheet" href="assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css"> --}}
 @endsection
 
 @section('content')
@@ -38,9 +39,16 @@
                                 <td>{{$data->keterangan}}</td>
                                 <td>{{$data->nominal}}</td>
                                 <td>{{$data->tanggal}}</td>
-                                <td>
-                                  <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                  <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                <td class="align-right">
+
+                                  {{-- <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                  <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
+
+                                  <div class="btn-table justify-content-right" role="group">
+                                    <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                  </div> 
+
                                 </td>
                                 <td></td>
                               </tr>
@@ -62,8 +70,6 @@
 <script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
 <script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
-<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 @endsection
 
 @section('page-script')
