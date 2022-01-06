@@ -1,40 +1,5 @@
 @extends('appuser')
 
-
-{{-- @section('content')
-<!-- Main Content -->
-<div class="main-content">
-  <section class="section">
-    <div class="section-header">
-        <h1>Halaman Admin Web Almu'awanah</h1>
-    </div>
-    <div class="alert alert-danger alert-has-icon">
-        <div class="alert-body">
-            <i class="fas fa-exclamation-triangle mr-1"></i> This is a danger alert.
-        </div>
-    </div>
-    <div class="section-body">
-      <h2 class="section-title">Dashboard</h2>
-      
-      <div class="row">
-        <div class="col-12 mb-4">
-          <div class="hero bg-primary text-white">
-            <div class="hero-inner text-center">
-              <h1>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
-              <br>
-              <h4 class="lead">Selamat datang, Mitra {{ Auth::user()->nama_mitra }}!!</h4>
-              <div class="mt-4">
-                <h4>Current Time: <span id="datetime"></span></h4>
-              </div>
-            </div>
-          </div>         
-        </div>
-      </div>            
-    </div>
-  </section>
-</div>
-@endsection --}}
-
 @section('content')
 <div class="main-content">
     <section class="section">
@@ -47,12 +12,49 @@
                     <div class="hero bg-primary text-white">
                         <div class="hero-inner">
                             <h2>Selamat datang, Mitra {{ Auth::user()->nama_mitra }}!</h2>
-                            <p class="lead">This page is a place to manage posts, categories and more.</p>
                         </div>
                     </div>
+                </div>                
+            </div>
+
+            <div class="row justify-content-center mb-4">
+             
+                <div class="col-3">
+                  <a type="button" class="btn bg-white btn-outline-primary text-primary btn-sq-responsive"><i class="fas fa-hand-holding-usd"></i></a>
+                </div>
+
+                <div class="col-3">
+                  <a type="button" class="btn bg-white btn-outline-primary text-primary btn-sq-responsive"><i class="fas fa-sign-in-alt"></i></a>
+                </div>
+
+                <div class="col-3">
+                  <a type="button" class="btn bg-white btn-outline-primary btn-sq-responsive"><i class="fas fa-sign-out-alt"></i></a>
                 </div>
             </div>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Bar Chart</h4>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="myChart2"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
         </div>
     </section>
 </div>
+@endsection
+
+@section('lib-script')
+<script src="assets/modules/chart.min.js"></script>
+@endsection
+
+@section('page-script')
+<script src="assets/js/page/modules-chartjs.js"></script>
 @endsection
