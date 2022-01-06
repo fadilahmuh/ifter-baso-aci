@@ -72,8 +72,8 @@
           <ul class="sidebar-menu">
             <li class=" @if(url()->current()==route('home'))active @endif"><a class="nav-link" href="{{ route('home')}}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
             <li class=" @if(url()->current()==route('transaksi'))active @endif"><a class="nav-link" href="{{ route('transaksi')}}"><i class="fas fa-hand-holding-usd"></i> <span>Transaksi</span></a></li>
-            <li class=" @if(url()->current()==route('keluar'))active @endif"><a class="nav-link" href="{{ route('keluar')}}"><i class="fas fa-sign-in-alt"></i> <span>Uang Masuk</span></a></li>
-            <li class=" @if(url()->current()==route('masuk'))active @endif"><a class="nav-link" href="{{ route('masuk')}}"><i class="fas fa-sign-out-alt"></i> <span>Uang Keluar</span></a></li>           
+            <li class=" @if(url()->current()==route('masuk'))active @endif"><a class="nav-link" href="{{ route('masuk')}}"><i class="fas fa-sign-in-alt"></i> <span>Uang Masuk</span></a></li>
+            <li class=" @if(url()->current()==route('keluar'))active @endif"><a class="nav-link" href="{{ route('keluar')}}"><i class="fas fa-sign-out-alt"></i> <span>Uang Keluar</span></a></li>           
             <li><a class="nav-link  @if(url()->current()==route('doc'))active @endif" href="{{ route('doc')}}"><i class="fas fa-pencil-ruler"></i> <span>Dokumentasi</span></a></li>
           </ul>
 

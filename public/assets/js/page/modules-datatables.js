@@ -29,10 +29,22 @@ $("[data-checkboxes]").each(function() {
 });
 
 $("#table-1").dataTable({
-  "columnDefs": [
-    { "sortable": false, "targets": [2,3] }
+  responsive: {
+    details: {
+        type: 'column',
+        target: -1
+    }
+  },
+  columnDefs: [ 
+    {
+      className: 'dtr-control',
+      orderable: false,
+      targets:   -1,
+    },
+    { responsivePriority: 2, targets: -1 }
   ]
 });
+
 $("#table-2").dataTable({
   "columnDefs": [
     { "sortable": false, "targets": [0,2,3] }

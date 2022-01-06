@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Log;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,13 @@ class ControllerUser extends Controller
 
     public function masuk()
     {
-       
+        $datas = Transaction::where('users_id', Auth::user()->id)
+        ->where('is_pemasukan', 1)
+        ->orderByDesc('created_at')->get();
+        // dd($datas);
+
+        $title = 'Uang Masuk';
+        return view('masuk', compact('title','datas'));
     }
 
     public function keluar()
