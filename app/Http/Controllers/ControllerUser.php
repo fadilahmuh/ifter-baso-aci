@@ -35,14 +35,19 @@ class ControllerUser extends Controller
         $datas = Transaction::where('users_id', Auth::user()->id)
         ->where('is_pemasukan', 1)
         ->orderByDesc('created_at')->get();
-        // dd($datas);
-
+        
         $title = 'Uang Masuk';
-        return view('masuk', compact('title','datas'));
+        return view('keluarmasuk', compact('title','datas'));
     }
 
     public function keluar()
     {
+        $datas = Transaction::where('users_id', Auth::user()->id)
+        ->where('is_pemasukan', 0)
+        ->orderByDesc('created_at')->get();
+        
+        $title = 'Uang Keluar';
+        return view('keluarmasuk', compact('title','datas'));
     }
 
     public function log()

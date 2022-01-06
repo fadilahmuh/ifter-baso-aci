@@ -29,19 +29,8 @@ $("[data-checkboxes]").each(function() {
 });
 
 $("#table-1").dataTable({
-  responsive: {
-    details: {
-        type: 'column',
-        target: -1
-    }
-  },
-  columnDefs: [ 
-    {
-      className: 'dtr-control',
-      orderable: false,
-      targets:   -1,
-    },
-    { responsivePriority: 2, targets: -1 }
+  "columnDefs": [
+    { "sortable": false, "targets": [2,3] }
   ]
 });
 
