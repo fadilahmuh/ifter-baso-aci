@@ -47,7 +47,7 @@
               </div>
             </div>
 
-            <div class="form-group row mb-4">
+            {{-- <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
               <div class="col-sm-12 col-md-7 pl-4">
                 <div class="pl-3 pr-2 custom-radio form-check-inline">
@@ -57,6 +57,22 @@
                 <div class="pl-3 custom-radio form-check-inline">
                   <input type="radio" id="customRadio2" name="is_pemasukan" class="custom-control-input"  value="0">
                   <label class="custom-control-label" for="customRadio2">Pengeluaran</label>
+                </div>
+              </div>
+            </div> --}}
+
+            <div class="form-group row mb-4">
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+              <div class="col-sm-12 col-md-7 pl-4">
+                <div class="selectgroup w-100">
+                  <label class="selectgroup-item">
+                    <input type="radio" name="is_pemasukan" value="1" class="selectgroup-input">
+                    <span class="selectgroup-button">Pemasukan</span>
+                  </label>
+                  <label class="selectgroup-item">
+                    <input type="radio" name="is_pemasukan" value="0" class="selectgroup-input">
+                    <span class="selectgroup-button">Pengeluaran</span>
+                  </label>
                 </div>
               </div>
             </div>

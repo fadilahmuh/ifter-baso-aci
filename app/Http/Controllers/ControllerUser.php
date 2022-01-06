@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 // use Jenssegers\Agent\Agent;
@@ -18,12 +19,35 @@ class ControllerUser extends Controller
 
     }
 
-    public function landingpage()
+    public function data_ds(Request $request)
     {
-        $title = 'LandingPage';
-        return view('landingpage', compact('title'));
+        if ($request->ajax()) {
+            $pemasukan = DB::table('transactions')
+            ->where('users_id', Auth::user()->id)
+            ->where('is_pemasukan', 1)
+            ->where('tanggal', today())
+            ->sum('nominal');
+
+            $pengeluaran = DB::table('transactions')
+            ->where('users_id', Auth::user()->id)
+            ->where('is_pemasukan', 0)
+            ->where('tanggal', today())
+            ->sum('nominal');
+
+            $data = [$pemasukan,  $pengeluaran];
+
+            if ($pemasukan == 0 && $pengeluaran == 0) {
+                return response()->json([
+                    false
+                ]);  
+            }else{
+                return response()->json([
+                    $data
+                ]);           
+            }
+        }
     }
-    
+
     public function transaksi()
     {
         $title = 'Transaksi';
