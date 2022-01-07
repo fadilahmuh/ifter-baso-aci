@@ -32,13 +32,16 @@
                       <p>{{$log->keterangan}}@if(!is_null($log->transactions_id)) @if($log->transactions->is_pemasukan == True)pemasukan @else pengeluaran @endif @endif</p>
                     </div>                    
                   </div>
-                  @endforeach
-
-                  {{$logs ->links()}}
+                  @endforeach  
 
                 </div>
               </div>
+            </div> 
+            
+            <div class="row justify-content-center text-center">
+                {{$logs ->links()}}
             </div>
+
           </div>
         </section>
       </div>
