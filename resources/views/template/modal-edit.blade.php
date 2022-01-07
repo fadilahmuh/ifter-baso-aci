@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" style="display: show;">
+
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,26 +7,31 @@
                 <span aria-hidden="true"></span>
                 </button>
             </div>
+            <form action="{{ route('transaksi.update',[$data->id]) }}" method="POST" enctype="multipart/form-data">
+              @method('PUT')
+              @csrf
             <div class="modal-body">
                 <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="text" name="tanggal" class="form-control datepicker">
+                    <input type="text" name="tanggal" class="form-control datepicker" value="{{$data->tanggal}}">
+                    <p class="text-muted">(Tanggal tidak dapat diubah)</p>
                 </div>
                 <div class="form-group">
                     <label>Keterangan</label>
-                    <input type="text" name="keterangan" class="form-control">
+                    <input type="text" name="keterangan" class="form-control" value="{{$data->keterangan}}">
                 </div>
                 <div class="form-group">
                     <div class="selectgroup w-100">
                         <label class="selectgroup-item">
-                          <input type="radio" name="is_pemasukan" value="1" class="selectgroup-input">
+                          <input type="radio" name="is_pemasukan" value="1" class="selectgroup-input" disabled @if($data->is_pemasukan == 1) checked @endif>
                           <span class="selectgroup-button">Pemasukan</span>
                         </label>
                         <label class="selectgroup-item">
-                          <input type="radio" name="is_pemasukan" value="0" class="selectgroup-input">
+                          <input type="radio" name="is_pemasukan" value="0" class="selectgroup-input" disabled @if($data->is_pemasukan == 0 && $data->is_pemasukan != null) checked @endif>
                           <span class="selectgroup-button">Pengeluaran</span>
                         </label>
                       </div>
+                      <p class="text-muted">(Pilihan tidak dapat diubah)</p>
                 </div>
                 <div class="form-group">
                     <label>Nominal</label>
@@ -36,22 +41,23 @@
                             Rp
                           </div>
                         </div>
-                        <input type="text" name="nominal" class="form-control currency">
+                        <input type="text" name="nominal" class="form-control currency" value="{{$data->nominal}}">
                       </div>
                 </div>
             </div>
             <div class="modal-footer bg-whitesmoke br">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
+          </form>  
         </div>
     </div>
 </div>
 
 <script src="{{ asset('assets/modules/cleave-js/dist/cleave.min.js') }}"></script>
 <script src="{{ asset('assets/modules/cleave-js/dist/addons/cleave-phone.us.js') }}"></script>
-<script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script> --}}
 
 <script src="{{ asset('assets/js/views/transaksi.js') }}"></script>
-<script src="{{ asset('assets/js/page/bootstrap-modal.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/page/bootstrap-modal.js') }}"></script> --}}

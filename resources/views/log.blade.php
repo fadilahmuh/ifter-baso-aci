@@ -29,7 +29,7 @@
                         <span class="bullet"></span>
                         <a class="text-job" href="#">View</a>
                       </div>
-                      <p>{{$log->keterangan}}@if(!is_null($log->transactions_id)) @if($log->transactions->is_pemasukan == 1)pemasukan @else pengeluaran @endif @endif</p>
+                      <p>{{$log->keterangan}}@if(!is_null($log->transactions_id)) @if($log->transactions->is_pemasukan == True)pemasukan @else pengeluaran @endif @endif</p>
                     </div>                    
                   </div>
                   @endforeach

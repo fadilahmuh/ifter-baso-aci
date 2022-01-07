@@ -26,12 +26,14 @@ class ControllerUser extends Controller
             ->where('users_id', Auth::user()->id)
             ->where('is_pemasukan', 1)
             ->where('tanggal', today())
+            ->where('deleted_at', null)
             ->sum('nominal');
 
             $pengeluaran = DB::table('transactions')
             ->where('users_id', Auth::user()->id)
             ->where('is_pemasukan', 0)
             ->where('tanggal', today())
+            ->where('deleted_at', null)
             ->sum('nominal');
 
             $data = [$pemasukan,  $pengeluaran];
@@ -76,6 +78,7 @@ class ControllerUser extends Controller
 
     public function log()
     {
+        // $logs = Log::findorfail(13);
         $logs = Log::where('users_id', Auth::user()->id)
         ->orderByDesc('created_at')
         ->paginate(10);

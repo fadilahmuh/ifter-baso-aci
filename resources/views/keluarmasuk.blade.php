@@ -12,7 +12,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-        <h1>{{$title}} {{ Session('success') }} </h1>
+        <h1>{{$title}}</h1>
         </div>
         @if($errors->any())
           @foreach($errors->getMessages() as $this_error)
@@ -38,6 +38,7 @@
                     <div class="card-body">
 
                       @if(($agent = new \Jenssegers\Agent\Agent())->isMobile())
+{{-- Mobile View --}}
                         <table class="table table-striped nowrap" id="table-1">
                           <thead>                                 
                             <tr>                             
@@ -57,7 +58,7 @@
                                 <td>{{$data->tanggal}}</td>
                                 <td class="align-right">
                                   <div class="btn-table justify-content-right" role="group">
-                                    <a href="/" class="btn  btn-icon btn-warning"><i class="fas fa-edit"></i></a>
+                                    <button class="edit btn btn-icon btn-warning" data-url="{{ route('transaksi.edit', [$data->id]) }}"><i class="fas fa-edit"></i></button>
                                     <button class="del btn  btn-icon btn-danger" data-url="{{ route('transaksi.destroy', [$data->id]) }}"><i class="fas fa-trash"></i></button>
                                   </div> 
                                 </td>
@@ -69,7 +70,7 @@
                         </table>  
                         
                         @else
-
+{{-- Desktop View --}}
                         <table class="table table-striped" id="table-1">
                           <thead>                                 
                             <tr>                             
@@ -109,14 +110,20 @@
             </div>
         </div>
     </section>
-</div>
+
+  </div>
 <form id="del-form" method="POST">
   @csrf
   @method('delete')
 </form>
 
-<div id="modal-json"></div>
 @endsection
+
+@section('modal')
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-json" style="display: show;">
+</div>
+@endsection
+
 
 @section('lib-script')
 <script src="assets/modules/datatables/datatables.min.js"></script>
@@ -132,29 +139,4 @@
 @else
 <script src="{{ asset('assets/js/views/table.js') }}"></script>
 @endif
-@endsection
-
-@section('line-script')
-  {{-- <script>
-    console.log('asd');
-    $(".del").click(function (event) {
-      event.preventDefault();
-      console.log('del clicked');
-    });
-    $(".del").click(function (event) {
-    // var form = $(this).closest("form");
-    event.preventDefault();
-    swal({
-        title: `Hapus data yang dipilih?`,
-        text: "Jika data ini dihapus maka tidak dapat dikembalikan lagi.",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
-            // form.submit();
-        }
-    });
-});
-  </script> --}}
 @endsection

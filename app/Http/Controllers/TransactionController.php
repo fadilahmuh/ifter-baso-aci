@@ -43,7 +43,6 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        // dd($request->tanggal);  
         $rules = array(
             'tanggal' => 'required|before_or_equal:today',
             'keterangan' => 'required',
@@ -108,9 +107,17 @@ class TransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaction $transaction)
+    public function edit($id)
     {
-        //
+        // if ($request->ajax()) {
+            $data = Transaction::findorfail($id);
+
+            $modal = view('template.modal-edit', compact('data'))->render();
+            
+            return response()->json([
+                'modal' =>  $modal
+            ]);           
+        // }
     }
 
     /**
@@ -120,9 +127,47 @@ class TransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
+    public function update(UpdateTransactionRequest $request, Transaction $transaction,$id)
     {
-        //
+        $data = Transaction::find($id);
+        // dd($request);
+        $rules = array(
+            'keterangan' => 'required',
+            'nominal' => 'required|integer',
+        );    
+        $messages = array(        
+            'keterangan.required' => 'Keterangan tidak boleh kosong!!',
+            'nominal.required' => 'Nominal tidak boleh kosong!!',
+            'nominal.integer' => 'Nominal tidak valid, masukan nominal angka!!',            
+        );
+
+        $request->all();
+        $validator = Validator::make($request->all(), $rules, $messages);        
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        } else {
+            $data->update([
+                'keterangan' => $request->keterangan,
+                'nominal' => $request->nominal,
+            ]);
+
+            Log::create([
+                'keterangan'=> 'Mengubah transaksi',
+                'type' => 'U',
+                'transactions_id' => $data->id,
+                'users_id' => Auth::user()->id,
+            ]);
+
+            if($data->is_pemasukan == 1)
+            {                
+                $msg = 'Transaksi Pemasukan berhasil diubah.';
+            } else {
+                $msg = 'Transaksi Pengeluaran berhasil diubah.';
+            };
+
+            return redirect()->back()->with('success',$msg);
+        }
     }
 
     /**
@@ -133,8 +178,21 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        Transaction::findorfail($id)->delete();
+        $data = Transaction::find($id);
 
-        return redirect()->route('masuk')->with('success','Data berhasil dihapus');
+        if (!is_null($data)) {
+            Log::create([
+                'keterangan'=> 'Menghapus transaksi',
+                'type' => 'D',
+                'transactions_id' =>  $data ->id,
+                'users_id' => Auth::user()->id,
+            ]);
+            $data->delete();
+
+            return redirect()->back()->with('success','Data berhasil dihapus');
+        }
+
+        return redirect()->back()->withErrors(['msg' => 'Data tidak ditemukan']);
+
     }
 }

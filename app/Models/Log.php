@@ -19,6 +19,6 @@ class Log extends Model
     }
 
     public function transactions(){
-    	return $this->belongsTo(Transaction::class);
+    	return $this->belongsTo(Transaction::class)->withTrashed();
     }
 }

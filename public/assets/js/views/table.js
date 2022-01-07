@@ -2,11 +2,6 @@ $("#table-1").dataTable({
     ordering: false,
 });
 
-// $(".del").click(function (event) {
-//     event.preventDefault();
-//     console.log("del clicked");
-// });
-
 $(".del").click(function (e) {
     var url = $(this).data("url");
     document.getElementById("del-form").action = url;

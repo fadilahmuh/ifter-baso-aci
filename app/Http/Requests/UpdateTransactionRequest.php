@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class UpdateTransactionRequest extends FormRequest
 {
@@ -11,10 +12,10 @@ class UpdateTransactionRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return false;
-    }
+    // public function authorize()
+    // {
+    //     return false;
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,5 +27,12 @@ class UpdateTransactionRequest extends FormRequest
         return [
             //
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'nominal' => (int)Str::replace(',', '', $this->nominal),
+        ]);
     }
 }
