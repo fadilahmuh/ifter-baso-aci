@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="text" name="tanggal" class="form-control datepicker" value="{{$data->tanggal}}">
+                    <input type="text" name="tanggal" class="form-control datepicker" value="{{$data->tanggal}}" disabled>
                     <p class="text-muted">(Tanggal tidak dapat diubah)</p>
                 </div>
                 <div class="form-group">
@@ -23,11 +23,11 @@
                 <div class="form-group">
                     <div class="selectgroup w-100">
                         <label class="selectgroup-item">
-                          <input type="radio" name="is_pemasukan" value="1" class="selectgroup-input" disabled @if($data->is_pemasukan == 1) checked @endif>
+                          <input type="radio" name="is_pemasukan" value="1" class="selectgroup-input" @if($data->is_pemasukan == 1) checked @endif disabled>
                           <span class="selectgroup-button">Pemasukan</span>
                         </label>
                         <label class="selectgroup-item">
-                          <input type="radio" name="is_pemasukan" value="0" class="selectgroup-input" disabled @if($data->is_pemasukan == 0 && $data->is_pemasukan != null) checked @endif>
+                          <input type="radio" name="is_pemasukan" value="0" class="selectgroup-input"  @if($data->is_pemasukan == 0) checked @endif disabled>
                           <span class="selectgroup-button">Pengeluaran</span>
                         </label>
                       </div>

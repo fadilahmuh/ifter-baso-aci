@@ -90,7 +90,7 @@
                                 <td class="align-middle">
 
                                   <div class="btn-table justify-content-center" role="group">
-                                    <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                    <button class="edit btn btn-icon btn-warning" data-url="{{ route('transaksi.edit', [$data->id]) }}"><i class="fas fa-edit"></i></button>
                                     <button class="del btn  btn-icon btn-danger" data-url="{{ route('transaksi.destroy', [$data->id]) }}"><i class="fas fa-trash"></i></button>
                                   </div> 
 

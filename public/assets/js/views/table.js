@@ -18,3 +18,25 @@ $(".del").click(function (e) {
         }
     });
 });
+
+
+
+$(".edit").click(function (e) {
+    e.preventDefault();
+    var route = $(this).data("url");
+    $.ajax({
+        type: "GET",
+        url: route,
+        dataType: "json",
+        success: function (response) {
+          // console.log(response.modal);
+            $("#modal-json").html(response.modal);
+            $("#modal-json").modal("show");
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(
+                xhr.status + "\n" + xhr.responseText + "\n" + thrownError
+            );
+        },
+    });
+});
