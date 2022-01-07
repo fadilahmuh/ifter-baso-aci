@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Log;
 use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,6 +51,29 @@ class ControllerUser extends Controller
         }
     }
 
+    public function laporan()
+    {
+        $data = DB::table('transactions')
+        ->where('users_id', Auth::user()->id)
+        ->where('deleted_at', null)
+        ->orderBy('tanggal', 'asc')
+        ->get();
+    
+    $tanggal = [
+        Carbon::createFromFormat('Y-m-d', $data->first()->tanggal)->format('d-m-Y'),
+        Carbon::createFromFormat('Y-m-d', $data->last()->tanggal)->format('d-m-Y')
+    ];
+
+    $pemasukan = $data->where('is_pemasukan', 1)->sum('nominal');
+    $pengeluaran = $data->where('is_pemasukan', 0)->sum('nominal');
+
+    $total = $pemasukan - $pengeluaran;
+
+        $title = 'Laporan';
+
+        return view('labarugi', compact('title','pemasukan','pengeluaran','total','tanggal'));
+    }
+    
     public function transaksi()
     {
         $title = 'Transaksi';
@@ -78,7 +102,6 @@ class ControllerUser extends Controller
 
     public function log()
     {
-        // $logs = Log::findorfail(13);
         $logs = Log::where('users_id', Auth::user()->id)
         ->orderByDesc('created_at')
         ->paginate(10);

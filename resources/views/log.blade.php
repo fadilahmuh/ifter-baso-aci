@@ -27,7 +27,7 @@
                       <div class="mb-2">
                         <span class="text-job">{{Carbon::parse($log->created_at)->diffForHumans()}}</span>
                         <span class="bullet"></span>
-                        <a class="text-job" href="#">View</a>
+                        {{-- <a class="text-job" href="#">View</a> --}}
                       </div>
                       <p>{{$log->keterangan}}@if(!is_null($log->transactions_id)) @if($log->transactions->is_pemasukan == True)pemasukan @else pengeluaran @endif @endif</p>
                     </div>                    

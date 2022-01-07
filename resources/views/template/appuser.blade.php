@@ -65,7 +65,7 @@
             <li class=" @if(url()->current()==route('transaksi'))active @endif"><a class="nav-link" href="{{ route('transaksi')}}"><i class="fas fa-hand-holding-usd"></i> <span>Transaksi</span></a></li>
             <li class=" @if(url()->current()==route('masuk'))active @endif"><a class="nav-link" href="{{ route('masuk')}}"><i class="fas fa-sign-in-alt"></i> <span>Uang Masuk</span></a></li>
             <li class=" @if(url()->current()==route('keluar'))active @endif"><a class="nav-link" href="{{ route('keluar')}}"><i class="fas fa-sign-out-alt"></i> <span>Uang Keluar</span></a></li>           
-            <li><a class="nav-link  @if(url()->current()==route('doc'))active @endif" href="{{ route('doc')}}"><i class="fas fa-pencil-ruler"></i> <span>Dokumentasi</span></a></li>
+            <li class=" @if(url()->current()==route('doc'))active @endif"><a class="nav-link" href="{{ route('laporan')}}"><i class="fas fa-file-invoice-dollar"></i> <span>Laba-Rugi</span></a></li>           
           </ul>
 
           <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/uangmasuk', [ControllerUser::class, 'masuk'])->name('masuk');
     Route::get('/uangkeluar', [ControllerUser::class, 'keluar'])->name('keluar');
     Route::get('/log', [ControllerUser::class, 'log'])->name('log');         
+    Route::get('/laporan', [ControllerUser::class, 'laporan'])->name('laporan');         
     Route::get('/profil',[ControllerUser::class, 'profil'])->name('profil');
     Route::put('/profil/{id}',[ControllerUser::class, 'profil_update'])->name('profilupdate');
     Route::get('/profil/validate',[ControllerUser::class, 'validatepass'])->name('validatepass');
