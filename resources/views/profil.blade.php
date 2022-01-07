@@ -1,4 +1,4 @@
-@extends('appuser')
+@extends('template.appuser')
 
 @section('content')
 <div class="main-content">

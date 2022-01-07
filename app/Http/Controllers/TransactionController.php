@@ -43,9 +43,9 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        // dd($request);    
+        // dd($request->tanggal);  
         $rules = array(
-            'tanggal' => 'required|before:tomorrow',
+            'tanggal' => 'required|before_or_equal:today',
             'keterangan' => 'required',
             'nominal' => 'required|integer',
             'is_pemasukan' => 'required|boolean',
@@ -131,8 +131,10 @@ class TransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy($id)
     {
-        //
+        Transaction::findorfail($id)->delete();
+
+        return redirect()->route('masuk')->with('success','Data berhasil dihapus');
     }
 }

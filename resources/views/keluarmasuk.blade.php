@@ -1,4 +1,4 @@
-@extends('appuser')
+@extends('template.appuser')
 
 @section('csslib')
 <link rel="stylesheet" href="assets/modules/datatables/datatables.min.css">
@@ -12,25 +12,28 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-        <h1>{{$title}}</h1>
+        <h1>{{$title}} {{ Session('success') }} </h1>
         </div>
+        @if($errors->any())
+          @foreach($errors->getMessages() as $this_error)
+          <div class="alert alert-danger alert-has-icon">
+              <div class="alert-body">
+                  <i class="fas fa-exclamation-triangle mr-1"></i> {{$this_error[0]}}
+              </div>
+          </div>
+          @endforeach
+        @endif 
+        @if(Session::has('success'))
+        <div class="alert alert-success alert-has-icon">
+            <div class="alert-body">
+                <i class="fas fa-check mr-1"></i> {{ Session('success') }} 
+            </div>
+        </div>    
+        @endif
         <div class="section-body">
             <div class="row">
                 <div class="col-12">
                   <div class="card">
-                    {{-- <div class="card-header">
-                      <div class="dt-length"></div>
-                      <div class="card-header-action">
-                        <a href="#" class="btn btn-primary">
-                          View All
-                        </a>
-                      </div>
-                    </div> --}}
-                    {{-- <div class="card-footer text-right">
-                      <a href="#" class="btn btn-primary">
-                        <i class="fas fa-filter"></i>
-                      </a>
-                    </div> --}}
 
                     <div class="card-body">
 
@@ -53,15 +56,10 @@
                                 <td>{{$data->nominal}}</td>
                                 <td>{{$data->tanggal}}</td>
                                 <td class="align-right">
-
-                                  {{-- <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                  <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
-
                                   <div class="btn-table justify-content-right" role="group">
-                                    <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="/" class="btn  btn-icon btn-warning"><i class="fas fa-edit"></i></a>
+                                    <button class="del btn  btn-icon btn-danger" data-url="{{ route('transaksi.destroy', [$data->id]) }}"><i class="fas fa-trash"></i></button>
                                   </div> 
-
                                 </td>
                                 <td></td>
                               </tr>
@@ -92,11 +90,10 @@
 
                                   <div class="btn-table justify-content-center" role="group">
                                     <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <button class="del btn  btn-icon btn-danger" data-url="{{ route('transaksi.destroy', [$data->id]) }}"><i class="fas fa-trash"></i></button>
                                   </div> 
 
                                 </td>
-                                <td></td>
                               </tr>
                             @endforeach    
 
@@ -113,6 +110,12 @@
         </div>
     </section>
 </div>
+<form id="del-form" method="POST">
+  @csrf
+  @method('delete')
+</form>
+
+<div id="modal-json"></div>
 @endsection
 
 @section('lib-script')
@@ -120,13 +123,38 @@
 <script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
 <script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
+<script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 @endsection
 
 @section('page-script')
-{{-- <script src="assets/js/page/modules-datatables.js"></script> --}}
 @if( $agent->isMobile())
 <script src="{{ asset('assets/js/views/mtable.js') }}"></script>
 @else
 <script src="{{ asset('assets/js/views/table.js') }}"></script>
 @endif
+@endsection
+
+@section('line-script')
+  {{-- <script>
+    console.log('asd');
+    $(".del").click(function (event) {
+      event.preventDefault();
+      console.log('del clicked');
+    });
+    $(".del").click(function (event) {
+    // var form = $(this).closest("form");
+    event.preventDefault();
+    swal({
+        title: `Hapus data yang dipilih?`,
+        text: "Jika data ini dihapus maka tidak dapat dikembalikan lagi.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            // form.submit();
+        }
+    });
+});
+  </script> --}}
 @endsection

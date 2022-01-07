@@ -1,4 +1,4 @@
-@extends('appuser')
+@extends('template.appuser')
 
 @section('content')
 <div class="main-content">
@@ -36,41 +36,27 @@
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal</label>
               <div class="col-sm-12 col-md-7">
-                <input type="text" name="tanggal" class="form-control datepicker">
+                <input type="text" name="tanggal" class="form-control datepicker" value="{{old('tanggal')}}">
               </div>
             </div>
 
             <div class="form-group row mb-4">
               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Keterangan</label>
               <div class="col-sm-12 col-md-7">
-                <input type="text" name="keterangan" class="form-control">
+                <input type="text" name="keterangan" class="form-control" value="{{old('keterangan')}}">
               </div>
             </div>
 
-            {{-- <div class="form-group row mb-4">
-              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-              <div class="col-sm-12 col-md-7 pl-4">
-                <div class="pl-3 pr-2 custom-radio form-check-inline">
-                  <input type="radio" id="customRadio1" name="is_pemasukan" class="custom-control-input" value="1">
-                  <label class="custom-control-label" for="customRadio1">Pemasukan</label>
-                </div>
-                <div class="pl-3 custom-radio form-check-inline">
-                  <input type="radio" id="customRadio2" name="is_pemasukan" class="custom-control-input"  value="0">
-                  <label class="custom-control-label" for="customRadio2">Pengeluaran</label>
-                </div>
-              </div>
-            </div> --}}
-
             <div class="form-group row mb-4">
-              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{old('is_pemasukan')}}</label>
               <div class="col-sm-12 col-md-7 pl-4">
                 <div class="selectgroup w-100">
                   <label class="selectgroup-item">
-                    <input type="radio" name="is_pemasukan" value="1" class="selectgroup-input">
+                    <input type="radio" name="is_pemasukan" value="1" class="selectgroup-input" @if(old('is_pemasukan') == 1) checked @endif>
                     <span class="selectgroup-button">Pemasukan</span>
                   </label>
                   <label class="selectgroup-item">
-                    <input type="radio" name="is_pemasukan" value="0" class="selectgroup-input">
+                    <input type="radio" name="is_pemasukan" value="0" class="selectgroup-input" @if(old('is_pemasukan') == 0 && old('is_pemasukan') != null) checked @endif>
                     <span class="selectgroup-button">Pengeluaran</span>
                   </label>
                 </div>
@@ -86,7 +72,7 @@
                       Rp
                     </div>
                   </div>
-                  <input type="text" name="nominal" class="form-control currency">
+                  <input type="text" name="nominal" class="form-control currency" value="{{old('nominal')}}">
                 </div>
               </div>
             </div>             
@@ -102,84 +88,6 @@
 </div>
 <footer class="main-footer">
 </footer>
-</div>
-@endsection
-
-@section('modal')
-<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" style="display: show;">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Data Transaksi</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <div class="form-group">
-            <label>Tanggal</label>
-            <input type="text" class="form-control datemask" placeholder="DD/MM/YYYY">
-          </div>
-          <div class="form-group">
-            <label>Keterangan</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Uang Masuk / Keluar</label>
-            <select class="form-control">
-              <option>Uang Masuk</option>
-              <option>Uang Keluar</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Nominal</label>
-            <input type="text" class="form-control">
-          </div>
-      </div>
-      <div class="modal-footer bg-whitesmoke br">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- modal tambah -->
-<div class="modal fade" tabindex="-1" role="dialog" id="modalTambah" style="display: show;">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tambah Data Transaksi</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <div class="form-group">
-            <label>Tanggal</label>
-            <input type="text" class="form-control datemask" placeholder="DD/MM/YYYY">
-          </div>
-          <div class="form-group">
-            <label>Keterangan</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Uang Masuk / Keluar</label>
-            <select class="form-control">
-              <option>Uang Masuk</option>
-              <option>Uang Keluar</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Nominal</label>
-            <input type="text" class="form-control">
-          </div>
-      </div>
-      <div class="modal-footer bg-whitesmoke br">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
 @endsection
 
