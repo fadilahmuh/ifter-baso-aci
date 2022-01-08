@@ -80,7 +80,10 @@ class ControllerUser extends Controller
                     ->orderBy('tanggal', 'asc')
                     ->get();
 
-                    $tanggal = [$awal, $akhir];
+                    $tanggal = [
+                        Carbon::createFromFormat('Y-m-d', $awal)->format('d-m-Y'),
+                        Carbon::createFromFormat('Y-m-d', $akhir)->format('d-m-Y')
+                    ];
 
                 }
         } else {
