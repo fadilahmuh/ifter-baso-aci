@@ -1,6 +1,30 @@
 $("#table-1").dataTable({
-    ordering: false,
+    dom: '<"row"<"col-2 filter"><"col-4 text-center"l><"col-6"f>>tip',
+    language: {
+        lengthMenu:
+            'Tampilkan <select class="form-control">' +
+            '<option value="10">10</option>' +
+            '<option value="20">20</option>' +
+            '<option value="30">30</option>' +
+            '<option value="50">50</option>' +
+            '<option value="100">100</option>' +
+            '<option value="-1">All</option>' +
+            "</select>",
+    },
+    "ordering": false,
+    columnDefs: [
+        {
+            className: "dtr-control",
+            orderable: false,
+            targets: -1,
+        },
+        { responsivePriority: 2, targets: -1 },
+    ],
 });
+
+$(".filter").append(
+    '<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-filter"></i></button>'
+);
 
 $(".del").click(function (e) {
     var url = $(this).data("url");

@@ -51,18 +51,52 @@ class ControllerUser extends Controller
         }
     }
 
-    public function laporan()
+    public function laporan(Request $request)
     {
-        $data = DB::table('transactions')
-        ->where('users_id', Auth::user()->id)
-        ->where('deleted_at', null)
-        ->orderBy('tanggal', 'asc')
-        ->get();
+        if ($request->filled('awal', 'akhir')) {
+            $awal = Carbon::createFromFormat('Y-m-d', $request->awal)->format('Y-m-d');
+            $akhir = Carbon::createFromFormat('Y-m-d', $request->akhir)->format('Y-m-d');
+            $date = [
+                'awal' =>  $awal,
+                'akhir' =>  $akhir
+            ];
+            $rules = array(
+                'awal'    => 'date',
+                'akhir'      => 'date|after_or_equal:awal',
+            );
+            $messages = array(
+                'akhir.after_or_equal' => 'Tanggal tidak valid!',
+            );  
+
+            $validator = Validator::make($date, $rules, $messages);
+            
+                if ($validator->fails()) {
+                    return redirect()->back()->withInput()->withErrors($validator);
+                } else {
+                    $data = DB::table('transactions')
+                    ->where('users_id', Auth::user()->id)
+                    ->whereBetween('tanggal', [$awal, $akhir])
+                    ->where('deleted_at', null)
+                    ->orderBy('tanggal', 'asc')
+                    ->get();
+
+                    $tanggal = [$awal, $akhir];
+
+                }
+        } else {
+            $data = DB::table('transactions')
+                ->where('users_id', Auth::user()->id)
+                ->where('deleted_at', null)
+                ->orderBy('tanggal', 'asc')
+                ->get();
+
+                $tanggal = [
+                    Carbon::createFromFormat('Y-m-d', $data->first()->tanggal)->format('d-m-Y'),
+                    Carbon::createFromFormat('Y-m-d', $data->last()->tanggal)->format('d-m-Y')
+                ];
+        }
+
     
-    $tanggal = [
-        Carbon::createFromFormat('Y-m-d', $data->first()->tanggal)->format('d-m-Y'),
-        Carbon::createFromFormat('Y-m-d', $data->last()->tanggal)->format('d-m-Y')
-    ];
 
     $pemasukan = $data->where('is_pemasukan', 1)->sum('nominal');
     $pengeluaran = $data->where('is_pemasukan', 0)->sum('nominal');
@@ -73,28 +107,82 @@ class ControllerUser extends Controller
 
         return view('labarugi', compact('title','pemasukan','pengeluaran','total','tanggal'));
     }
-    
+
     public function transaksi()
     {
         $title = 'Transaksi';
         return view('transaction', compact('title'));
     }
 
-    public function masuk()
-    {
-        $datas = Transaction::where('users_id', Auth::user()->id)
-        ->where('is_pemasukan', 1)
-        ->orderByDesc('created_at')->get();
+    public function masuk(Request $request)
+    {        
+        if ($request->filled('awal', 'akhir')) {
+            $awal = Carbon::createFromFormat('Y-m-d', $request->awal)->format('Y-m-d');
+            $akhir = Carbon::createFromFormat('Y-m-d', $request->akhir)->format('Y-m-d');
+            $date = [
+                'awal' =>  $awal,
+                'akhir' =>  $akhir
+            ];
+            $rules = array(
+                'awal'    => 'date',
+                'akhir'      => 'date|after_or_equal:awal',
+            );
+            $messages = array(
+                'akhir.after_or_equal' => 'Tanggal tidak valid!',
+            );  
+
+            $validator = Validator::make($date, $rules, $messages);
+            
+                if ($validator->fails()) {
+                    return redirect()->back()->withInput()->withErrors($validator);
+                } else {
+                    $datas = Transaction::where('users_id', Auth::user()->id)
+                    ->where('is_pemasukan', 1)
+                    ->whereBetween('tanggal', [$awal, $akhir])
+                    ->orderByDesc('created_at')->get();  
+                }
+        } else {
+            $datas = Transaction::where('users_id', Auth::user()->id)
+            ->where('is_pemasukan', 1)
+            ->orderByDesc('created_at')->get();              
+        }
         
         $title = 'Uang Masuk';
         return view('keluarmasuk', compact('title','datas'));
     }
 
-    public function keluar()
+    public function keluar(Request $request)
     {
-        $datas = Transaction::where('users_id', Auth::user()->id)
-        ->where('is_pemasukan', 0)
-        ->orderByDesc('created_at')->get();
+        if ($request->filled('awal', 'akhir')) {
+            $awal = Carbon::createFromFormat('Y-m-d', $request->awal)->format('Y-m-d');
+            $akhir = Carbon::createFromFormat('Y-m-d', $request->akhir)->format('Y-m-d');
+            $date = [
+                'awal' =>  $awal,
+                'akhir' =>  $akhir
+            ];
+            $rules = array(
+                'awal'    => 'date',
+                'akhir'      => 'date|after_or_equal:awal',
+            );
+            $messages = array(
+                'akhir.after_or_equal' => 'Tanggal tidak valid!',
+            );  
+
+            $validator = Validator::make($date, $rules, $messages);
+            
+                if ($validator->fails()) {
+                    return redirect()->back()->withInput()->withErrors($validator);
+                } else {
+                    $datas = Transaction::where('users_id', Auth::user()->id)
+                    ->where('is_pemasukan', 0)
+                    ->whereBetween('tanggal', [$awal, $akhir])
+                    ->orderByDesc('created_at')->get();  
+                }
+        } else {
+            $datas = Transaction::where('users_id', Auth::user()->id)
+            ->where('is_pemasukan', 0)
+            ->orderByDesc('created_at')->get();              
+        }
         
         $title = 'Uang Keluar';
         return view('keluarmasuk', compact('title','datas'));

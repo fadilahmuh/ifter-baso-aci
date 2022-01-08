@@ -71,3 +71,7 @@
 .btn-sq-responsive:hover {
     color: #fff !important;
 }
+
+.section-header .card-header-action {
+    margin-left: auto;
+}

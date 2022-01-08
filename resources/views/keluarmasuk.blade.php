@@ -1,11 +1,19 @@
 @extends('template.appuser')
 
 @section('csslib')
-<link rel="stylesheet" href="assets/modules/datatables/datatables.min.css">
-<link rel="stylesheet" href="assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="assets/modules/datatables/DataTables-1.10.16/css/responsive.dataTables.css">
-<link rel="stylesheet" href="assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/responsive.dataTables.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css') }}">
 {{-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css"> --}}
+@endsection
+
+@section('custom-css')
+<style>
+  .daterangepicker {
+    z-index: 1600 !important; /* has to be larger than 1050 */
+  }
+</style>
 @endsection
 
 @section('content')
@@ -122,18 +130,54 @@
 @section('modal')
 <div class="modal fade" tabindex="-1" role="dialog" id="modal-json" style="display: show;">
 </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" style="display: show; padding-right: 16px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Filter Tanggal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="@if(url()->current()==route('masuk') or url()->current()==route('masuk2')){{ route('masuk2') }} @else {{ route('keluar2') }}@endif" action="GET">
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <label for="awal">Awal</label>
+              <input type="text" class="form-control datepicker" name="awal">
+            </div>
+            <div class="col-6">
+              <label for="akhir">Akhir</label>
+              <input type="text" class="form-control datepicker" name="akhir">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-whitesmoke br">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Terapkan</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 @endsection
 
 
 @section('lib-script')
-<script src="assets/modules/datatables/datatables.min.js"></script>
-<script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
-<script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
+<script src="{{ asset('assets/modules/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('assets/modules/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
 <script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 @endsection
 
 @section('page-script')
+<script src="{{ asset('assets/js/page/bootstrap-modal.js') }}"></script>
 @if( $agent->isMobile())
 <script src="{{ asset('assets/js/views/mtable.js') }}"></script>
 @else

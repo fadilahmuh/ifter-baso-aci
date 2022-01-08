@@ -1,5 +1,5 @@
 $("#table-1").dataTable({
-    dom: '<"row"<"col-9"l><"col-3 filter">>ftip',
+    dom: '<"row"<"col-9"l><"col-3 text-center filter">>ftip',
     language: {
         lengthMenu:
             'Tampilkan <select class="form-control">' +
@@ -29,7 +29,7 @@ $("#table-1").dataTable({
 });
 
 $(".filter").append(
-    '<a href="#" class="btn btn-primary"><i class="fas fa-filter"></i></a>'
+    '<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-filter"></i></button>'
 );
 
 $("#table-1").on("click","tbody span.dtr-data .del",function (e) {
