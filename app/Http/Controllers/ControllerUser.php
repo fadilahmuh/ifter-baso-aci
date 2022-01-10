@@ -50,6 +50,12 @@ class ControllerUser extends Controller
             }
         }
     }
+    
+    public function about()
+    {
+        $title = 'About';
+        return view('about', compact('title'));
+    }
 
     public function laporan(Request $request)
     {

@@ -24,8 +24,8 @@ use App\Http\Controllers\TransactionController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/dokumentasi', [HomeController::class, 'doc'])->name('doc');
+
+// Route::get('/dokumentasi', [HomeController::class, 'doc'])->name('doc');
 
 Route::middleware('auth')->group(function(){
     //link->controllerUser(fungsi dalam kutip)
@@ -39,10 +39,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/profil',[ControllerUser::class, 'profil'])->name('profil');
     Route::put('/profil/{id}',[ControllerUser::class, 'profil_update'])->name('profilupdate');
     Route::get('/profil/validate',[ControllerUser::class, 'validatepass'])->name('validatepass');
-
+    
     Route::resource('transaksi', TransactionController::class)->names([
         'index' => 'transaksi',
     ]);
+
+    Route::get('/about', [ControllerUser::class, 'about'])->name('about');
 
     //JSON
     Route::get('/data-ds', [ControllerUser::class, 'data_ds'])->name('data-ds');
