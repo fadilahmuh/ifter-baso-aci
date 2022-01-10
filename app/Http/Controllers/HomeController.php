@@ -31,13 +31,4 @@ class HomeController extends Controller
             return view('landingpage');
         }
     }
-    public function about()
-    {
-
-    }
-    
-    public function doc()
-    {
-
-    }
 }
