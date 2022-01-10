@@ -60,7 +60,7 @@
         height: 66px !important;
         padding: 13px;
         font-size: 7px;
-        color: #6777ef !important;
+        color: #7abaeb !important;
     }
     .btn-sq-responsive i {
         vertical-align: middle;
@@ -69,7 +69,7 @@
 }
 
 .empty-state-icon:hover {
-    background-color: #6777ef !important;;   
+    background-color: #7abaeb !important;
 }
 
 .empty-state-icon:hover i {
