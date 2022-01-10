@@ -68,10 +68,13 @@
     }
 }
 
-.btn-sq-responsive:hover {
-    color: #fff !important;
+.empty-state-icon:hover {
+    background-color: #6777ef !important;;   
 }
 
+.empty-state-icon:hover i {
+    color: #fff !important;
+}
 .section-header .card-header-action {
     margin-left: auto;
 }

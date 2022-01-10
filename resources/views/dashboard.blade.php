@@ -19,16 +19,22 @@
 
             <div class="row justify-content-center mb-4">
              
-                <div class="col-3">
-                  <a type="button" class="btn bg-white btn-outline-primary btn-sq-responsive" href="{{ route('transaksi') }}"><i class="fas fa-hand-holding-usd" ></i></a>
+                <div class="col-4 empty-state p-0">
+                  <a class="empty-state-icon bg-white" href="{{ route('transaksi') }}">
+                    <i class="fas fa-hand-holding-usd  text-primary"></i>
+                  </a>
                 </div>
 
-                <div class="col-3">
-                  <a type="button" class="btn bg-white btn-outline-primary btn-sq-responsive" href="{{ route('masuk') }}"><i class="fas fa-sign-in-alt"></i></a>
+                <div class="col-4 empty-state p-0">
+                  <a class="empty-state-icon bg-white" href="{{ route('masuk') }}">
+                    <i class="fas fa-sign-in-alt  text-primary"></i>
+                  </a>
                 </div>
 
-                <div class="col-3">
-                  <a type="button" class="btn bg-white btn-outline-primary btn-sq-responsive" href="{{ route('keluar') }}"><i class="fas fa-sign-out-alt"></i></a>
+                <div class="col-4 empty-state p-0">
+                  <a class="empty-state-icon bg-white" href="{{ route('keluar') }}">
+                    <i class="fas fa-sign-out-alt  text-primary"></i>
+                  </a>
                 </div>
             </div>
 
