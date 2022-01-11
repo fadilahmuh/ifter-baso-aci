@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="{{ asset('assets-landing/vendor/swiper/swiper-bundle.min.css') }}">
 
   <!-- Template Main CSS File -->
-  <link href="assets-landing/css/style.css" rel="stylesheet">
+  <link href="{{ asset('assets-landing/css/style.css') }}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: FlexStart - v1.9.0
@@ -79,7 +79,7 @@
           </div>
         </div>
         <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <img src="assets-landing/img/BACKGROUND.png" class="w-75" alt="">
+          <img src="{{ asset('assets-landing/img/BACKGROUND.png') }}" class="w-75" alt="">
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
               <div class="member-img">
-                <img src="assets-landing/img/team/team-1.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets-landing/img/team/team-1.jpg') }}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
                 <h4>Dzulfiar Zahran Safhana</h4>
@@ -115,7 +115,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
               <div class="member-img">
-                <img src="assets-landing/img/team/team-2.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets-landing/img/team/team-2.jpg') }}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
                 <h4>Fannie Muhamad Fadillah S</h4>
@@ -126,7 +126,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
               <div class="member-img">
-                <img src="assets-landing/img/team/team-3.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets-landing/img/team/team-3.jpg') }}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
                 <h4>Andika Fauzi H</h4>
@@ -137,7 +137,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
               <div class="member-img">
-                <img src="assets-landing/img/team/team-4.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets-landing/img/team/team-4.jpg') }}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
                 <h4>M Yuan Ruslandi</h4>
@@ -188,7 +188,7 @@
   @yield('page-script')
   
   <!-- Template JS File -->
-  <script src="assets-landing/js/main.js"></script>
+  <script src="{{ asset('assets-landing/js/main.js') }}"></script>
 
   @yield('line-script')
 </body>
