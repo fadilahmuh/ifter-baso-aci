@@ -18,7 +18,7 @@
                   <p>Informatika ITENAS 2018</p>
                   <p>Fannie M. Fadilah</p>
                   <p>Dzulfiqar Zahran</p>
-                  <p>Andika Naufal H.</p>
+                  <p>Andika Fauzi H</p>
                   <p>Yuan Ruslandi</p>
                   <br>
                   <p>Kejasama dengan:</p>
