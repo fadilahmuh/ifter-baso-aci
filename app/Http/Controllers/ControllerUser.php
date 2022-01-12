@@ -250,7 +250,7 @@ class ControllerUser extends Controller
                 'kodepos.max' => 'Kode Pos masksimal 5 angka!',
                 'alamat.required' => 'Alamat tidak boleh kosong!',
             );            
-        } elseif ($request->tipe == 'pass'){
+        } elseif ($request->tipe == 'password'){
             $rules = array(
                 'password' => 'confirmed',
             );
@@ -281,7 +281,7 @@ class ControllerUser extends Controller
                     'users_id' => Auth::user()->id,
                 ]);
 
-            } elseif ($request->tipe == 'pass'){
+            } elseif ($request->tipe == 'password'){
                 $old_user->update([
                     'password' => isset($request->password)? bcrypt($request->password): $old_user->password ,
                 ]);
